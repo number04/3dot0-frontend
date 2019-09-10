@@ -1,0 +1,722 @@
+.scoreboard
+    min-height: calc(100vh - 112px)
+
+    section.hero
+        @include flexbox-center
+        height: 200px
+        background-color: $primary-light
+
+        h1
+            letter-spacing: 2px
+            font-family: ostrich
+            color: $primary-dark
+            font-size: 48px
+            line-height: 48px
+
+    section.actions
+        @include flexbox-center
+        background-color: $white
+        height: 80px
+        width: 100%
+
+        div.filters
+            width: 100%
+            max-width: 1024px
+            margin: auto
+            margin: 0px 4px
+            @include flexbox-center
+
+            div.matchup
+                min-width: 96px
+
+                button
+                    span
+                        @include flexbox-center
+                        height: 28px
+                        width: 28px
+
+                    &.disabled
+                        pointer-events: none
+
+                        span
+                            svg
+                                fill: $grey-2
+
+                > span
+                    position: relative
+                    bottom: 1px
+                    left: 1px
+                    text-transform: capitalize
+
+                    &:before
+                        content: 'm'
+
+            div.spacer
+                width: 100%
+
+    section.data
+        width: 98%
+        max-width: 1024px
+        margin: auto
+        margin-top: 32px
+        position: relative
+
+        div.table-info
+            display: none
+
+        div.table-totals
+            > span.filter-change
+                position: absolute
+                height: calc(100% - 161px)
+                width: 100%
+                background-color: $white
+                opacity: .92
+                z-index: 10
+                bottom: 0
+                left: 0
+
+
+            div
+                background-color: $white
+                width: 100%
+
+                table
+                    width: 96%
+                    margin: auto
+
+                    thead
+                        border-bottom: 1px solid $primary
+                        display: none
+
+                        tr
+                            @include flexbox-center
+
+                            th
+                                background-color: $white
+                                height: 40px
+                                line-height: 40px
+                                width: 100%
+                                text-transform: uppercase
+                                font-size: $size-xs
+
+                    tbody
+                        width: 100%
+
+                        tr
+                            @include flexbox-center-wrap
+
+                            &:last-of-type
+                                td
+                                    &:nth-of-type(n+1):nth-of-type(-n+2)
+                                        border-bottom: none
+
+                            &.show
+                                td
+                                    &:nth-of-type(n+1):nth-of-type(-n+2)
+                                        border-bottom: none
+
+                                    &:nth-of-type(n+3)
+                                        opacity: 1
+                                        transition: all 0.4s ease-in-out
+                                        visibility: visible
+                                        height: 40px
+
+                                    &:last-of-type
+                                        margin-bottom: 8px
+
+                                    &:nth-of-type(5), &:nth-of-type(13), &:nth-of-type(17)
+                                        background-color: lighten($primary-light, 5%)
+
+                                        > span
+                                            &:nth-of-type(2)
+                                                border-bottom: dashed 3px $white
+
+                                + tr
+                                    td
+                                        &:nth-of-type(n+1):nth-of-type(-n+2)
+                                            border-top: 1px solid $primary
+
+                            td
+                                height: 40px
+                                width: 100%
+                                font-size: $size-m
+
+                                &.tops
+                                    > span:last-of-type
+                                        font-weight: $bold
+
+                                &:nth-of-type(1)
+                                    @include flexbox-center
+                                    justify-content: flex-start
+                                    padding-left: 8px
+                                    height: 48px
+                                    width: calc(100% - 48px)
+                                    text-transform: capitalize
+                                    font-size: $size-l
+                                    border-bottom: 1px solid $primary
+
+                                    > svg:first-of-type
+                                        margin-right: 4px
+
+                                    > span
+                                        font-weight: $semi-bold
+                                        padding-right: 4px
+
+                                        &:nth-child(2)
+                                            display: none
+
+                                &:nth-of-type(2)
+                                    @include flexbox-center
+                                    width: 48px
+                                    height: 48px
+                                    justify-content: flex-start
+                                    border-bottom: 1px solid $primary
+
+                                &:nth-of-type(n+3)
+                                    visibility: hidden
+                                    opacity: 0
+                                    height: 0px
+                                    transition: all 0.3s ease-in-out
+                                    @include flexbox-center
+
+                                    > span
+                                        &:nth-of-type(1)
+                                            @include flexbox-center
+                                            width: 48px
+                                            text-transform: uppercase
+                                            font-size: $size-s
+                                            justify-content: flex-end
+
+                                        &:nth-of-type(2)
+                                            width: calc(100% - 128px)
+                                            height: 8px
+                                            margin: 0px 16px
+                                            border-bottom: dashed 2px $primary-light
+
+                                        &:nth-of-type(3)
+                                            @include flexbox-center
+                                            width: 48px
+                                            justify-content: flex-start
+
+        div:not(.table-totals)
+            > span.filter-change
+                position: absolute
+                height: 100%
+                width: 100%
+                background-color: $white
+                opacity: .92
+                z-index: 10
+
+            div
+                background-color: $white
+                width: 100%
+                padding: 8px 0px
+
+                &:not(:first-of-type)
+                    margin-top: 8px
+
+                table
+                    width: 96%
+                    margin: auto
+
+                    thead
+                        tr
+                            th
+                                @include sticky
+                                background-color: $white
+                                z-index: 4
+                                text-align: center
+                                height: 40px
+                                line-height: 40px
+                                text-transform: uppercase
+                                font-size: $size-xs
+                                border-bottom: 1px solid $primary
+
+                    tbody
+                        width: 100%
+
+                        tr
+                            @include flexbox-center-wrap
+                            width: 100%
+                            border-bottom: 1px solid $primary-light
+
+                            &:last-of-type
+                                border-bottom: none
+
+                            td
+                                height: 48px
+                                font-size: $size-m
+                                text-align: center
+
+                                &:nth-of-type(1)
+                                    @include flexbox-center
+                                    justify-content: flex-start
+                                    padding-left: 8px
+
+                                    > svg:first-of-type
+                                        margin-right: 4px
+
+                                    > span
+                                        font-weight: $semi-bold
+                                        transition: all 0.2s ease-in-out
+                                        padding-right: 4px
+
+                                        &:nth-child(1), &:nth-child(2)
+                                            cursor: pointer
+
+                                            &:hover
+                                                color: $secondary
+
+                                        &:nth-child(2)
+                                            letter-spacing: 1px
+
+                                        &:nth-child(n+2)
+                                            font-weight: $light
+                                            font-size: $size-xs
+                                            text-transform: uppercase
+
+        div.table-matchup
+            div
+                table
+                    thead
+                        tr
+                            th
+                                &:nth-of-type(1)
+                                    display: none
+
+                                &:nth-of-type(n+2)
+                                    display: inline-block
+                                    width: 14.2857%
+
+                    tbody
+                        &:not(:last-of-type)
+                            tr
+                                &:last-of-type
+                                    border-bottom: 1px solid $primary
+
+                        tr
+                            td
+                                &:nth-of-type(1)
+                                    width: 100%
+
+                                &:nth-of-type(n+2)
+                                    @include flexbox-center
+                                    height: 32px
+                                    width: 14.2857%
+                                    color: $grey-7
+                                    text-align: center
+                                    border-top: 1px solid lighten($primary-light, 6%)
+                                    font-size: $size-s
+
+                &:first-of-type
+                    thead
+                        tr
+                            th
+                                &:nth-of-type(n+2)
+                                    width: 12.5%
+
+                    tbody
+                        tr
+                            td
+                                &:nth-of-type(n+2)
+                                    width: 12.5%
+
+        div.table-daily
+            div
+                table
+                    thead
+                        tr
+                            th
+                                &:nth-of-type(1)
+                                    display: none
+
+                                &:nth-of-type(2)
+                                    display: none
+
+                                &:nth-of-type(n+3)
+                                    display: inline-block
+                                    width: 14.2857%
+
+                    tbody
+                        &.dress
+                            tr
+                                &:first-of-type
+                                    border-top: 1px solid $primary
+
+                            &:first-of-type
+                                tr
+                                    &:first-of-type
+                                        border-top: none
+
+                            &:empty
+                                display: flex
+                                margin-bottom: 8px
+
+                        &.bench
+                            tr
+                                background-color: $grey-1
+                                border-bottom: 1px solid $white
+
+                                &:last-of-type
+                                    margin-bottom: 8px
+
+                        &.farm
+                            tr
+                                background-color: $farm-light
+                                border-bottom: 1px solid $white
+
+                                &:last-of-type
+                                    margin-bottom: 8px
+
+                        &.injury
+                            tr
+                                background-color: $injury-light
+                                border-bottom: 1px solid $white
+
+                                &:last-of-type
+                                    margin-bottom: 8px
+
+                        tr
+                            td
+                                &:nth-of-type(1)
+                                    width: calc(100% - 48px)
+
+                                &:nth-of-type(2)
+                                    @include flexbox-center
+                                    width: 48px
+                                    justify-content: flex-end
+                                    padding-right: 8px
+                                    font-size: $size-xs
+                                    font-weight: $medium
+
+                                &:nth-of-type(n+3)
+                                    @include flexbox-center
+                                    height: 32px
+                                    width: 14.2857%
+                                    color: $grey-7
+                                    text-align: center
+                                    border-top: 1px solid lighten($primary-light, 6%)
+                                    font-size: $size-s
+
+                &:first-of-type
+                    thead
+                        tr
+                            th
+                                &:nth-of-type(n+3)
+                                    width: 12.5%
+
+                    tbody
+                        tr
+                            td
+                                &:nth-of-type(n+3)
+                                    width: 12.5%
+
+@media only screen and (min-width: 375px)
+    .scoreboard
+        section.actions
+            div.filters
+                div.matchup
+                    min-width: 152px
+
+                    > span
+                        &:before
+                            content: 'matchup'
+                            padding-right: 4px
+
+@media only screen and (min-width: 425px)
+    .scoreboard
+        section.hero
+            h1
+                font-size: 80px
+                line-height: 80px
+
+        section.actions
+            div.filters
+                margin: 0px 8px
+
+@media only screen and (min-width: 507px)
+    .scoreboard
+        section.actions
+            div.filters
+                margin: 0px 16px
+
+@media only screen and (min-width: 768px)
+    .scoreboard
+        section.hero
+            h1
+                font-size: 64px
+                line-height: 64px
+
+        section.actions
+            div.filters
+                margin: 0px 32px
+
+        section.data
+            div.table-info
+                display: flex
+
+                div
+                    background-color: $white
+                    width: 100%
+                    margin: 8px 0px
+
+                    table
+                        width: 96%
+                        margin: auto
+
+                        thead
+                            tr
+                                @include flexbox-center
+                                height: 40px
+
+                                th
+                                    @include flexbox-center
+                                    width: calc(93.75% / #{$franchise-total})
+
+                                    &:nth-of-type(1)
+                                        max-width: 6.25%
+
+
+                        tbody
+                            tr
+                                @include flexbox-center
+                                height: 40px
+
+                                &:nth-of-type(2)
+                                    td
+                                        svg
+                                            position: relative
+                                            left: 2px
+
+                                td
+                                    @include flexbox-center
+                                    width: calc(93.75% / #{$franchise-total})
+
+                                    &:nth-of-type(1)
+                                        max-width: 6.25%
+                                        padding-left: 0px
+                                        justify-content: center !important
+
+                                        svg
+                                            fill: $primary-dark
+                                            margin-right: 0px !important
+
+
+            div.table-totals
+                div
+                    background-color: $white
+                    width: 100%
+                    margin: 8px 0px
+
+                    table
+                        width: 96%
+                        margin: auto
+
+                        thead
+                            display: flex
+
+                            tr
+                                width: 100%
+
+                                th
+                                    @include flexbox-center
+                                    width: 6.25%
+                                    border-top: none
+
+
+
+                        tbody
+                            width: 100%
+
+                            tr
+                                @include flexbox-center
+                                border-bottom: 1px solid $primary-light
+                                height: 48px
+
+                                &:last-of-type
+                                    border-bottom: none
+
+                                    td
+                                        &:nth-of-type(n+1):nth-of-type(-n+2)
+                                            border-bottom: none
+
+
+                                &.show
+                                    td
+                                        &:nth-of-type(n+1):nth-of-type(-n+2)
+                                            border-bottom: none
+
+                                        &:nth-of-type(n+3)
+                                            opacity: 1
+                                            transition: none
+                                            visibility: visible
+                                            height: 0px
+
+                                        &:last-of-type
+                                            margin-bottom: 0px
+
+                                        &:nth-of-type(3), &:nth-of-type(11), &:nth-of-type(15)
+                                            background-color: none
+
+                                            > span
+                                                &:nth-of-type(2)
+                                                    border-bottom: none
+
+                                    + tr
+                                        td
+                                            &:nth-of-type(n+1):nth-of-type(-n+2)
+                                                border-top: none
+
+                                td
+                                    height: 48px
+                                    font-size: $size-m
+
+                                    &.tops
+                                        > span:last-of-type
+                                            font-weight: $bold
+
+                                    &:nth-of-type(1)
+                                        @include flexbox-center
+                                        justify-content: center
+                                        padding-left: 0px
+                                        width: 6.25%
+                                        text-transform: capitalize
+                                        font-size: $size-l
+                                        border-bottom: none
+
+                                        > svg:first-of-type
+                                            margin-right: 4px
+
+                                        > span
+                                            font-weight: $semi-bold
+                                            padding-right: 0px
+
+                                            &:nth-child(1)
+                                                display: none
+
+                                            &:nth-child(2)
+                                                display: flex
+
+                                    &:nth-of-type(2)
+                                        @include flexbox-center
+                                        width: 6.25%
+                                        justify-content: center
+                                        border-bottom: none
+
+                                    &:nth-of-type(n+3)
+                                        visibility: visible
+                                        opacity: 1
+                                        width: 6.25%
+                                        transition: none
+                                        @include flexbox-center
+
+                                        > span
+                                            &:nth-of-type(1)
+                                                display: none
+
+                                            &:nth-of-type(2)
+                                                display: none
+
+                                            &:nth-of-type(3)
+                                                @include flexbox-center
+                                                width: 100%
+                                                justify-content: center
+
+                                    &:nth-of-type(3)
+                                        display: none
+
+                                    &:nth-of-type(4)
+                                        display: none
+
+                                    &:nth-of-type(5), &:nth-of-type(13), &:nth-of-type(17)
+                                        span
+                                            height: 48px
+                                            background-color: lighten($primary-light, 5%)
+
+            div.table-matchup
+                div
+                    table
+                        thead
+                            tr
+                                th
+                                    &:nth-of-type(1)
+                                        width: 44%
+                                        display: inline-block
+
+                                    &:nth-of-type(n+2)
+                                        width: 8%
+                                        border-top: none
+
+                        tbody
+                            tr
+                                td
+                                    height: 40px
+
+                                    &:nth-of-type(1)
+                                        width: 44%
+
+                                    &:nth-of-type(n+2)
+                                        width: 8%
+                                        border-top: none
+
+                    &:first-of-type
+                        thead
+                            tr
+                                th
+                                    &:nth-of-type(n+2)
+                                        width: 7%
+
+                        tbody
+                            tr
+                                td
+                                    &:nth-of-type(n+2)
+                                        width: 7%
+
+            div.table-daily
+                div
+                    table
+                        thead
+                            tr
+                                th
+                                    &:nth-of-type(1)
+                                        width: 36%
+                                        display: inline-block
+
+                                    &:nth-of-type(2)
+                                        width: 8%
+                                        display: inline-block
+                                        height: 40px
+
+                                    &:nth-of-type(n+3)
+                                        width: 8%
+                                        height: 40px
+
+                        tbody
+                            tr
+                                td
+                                    height: 40px
+
+                                    &:nth-of-type(1)
+                                        width: 36%
+                                        border-top: none
+
+                                    &:nth-of-type(2)
+                                        justify-content: center
+
+                                    &:nth-of-type(n+2)
+                                        width: 8%
+                                        border-top: none
+                                        height: 40px
+
+                    &:first-of-type
+                        thead
+                            tr
+                                th
+                                    &:nth-of-type(n+2)
+                                        width: 7%
+
+                        tbody
+                            tr
+                                td
+                                    &:nth-of-type(n+2)
+                                        width: 7%

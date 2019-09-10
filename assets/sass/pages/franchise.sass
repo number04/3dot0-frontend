@@ -1,0 +1,618 @@
+.franchise
+    min-height: calc(100vh - 112px)
+
+    section.hero
+        @include flexbox-center
+        height: 160px
+        background-color: $primary-light
+
+        h1
+            letter-spacing: 2px
+            font-family: ostrich
+            color: $primary-dark
+            padding-top: 40px
+            font-size: 48px
+            line-height: 48px
+
+    section.icons
+        @include flexbox-center
+        background-color: $primary-light
+        height: 40px
+        width: 100%
+
+        > div
+            @include flexbox-center
+            width: 98%
+            max-width: 1024px
+            margin: auto
+
+            justify-content: flex-end
+
+            > div
+                @include flexbox-center
+                width: auto
+                margin: 0px 8px
+
+                svg
+                    position: relative
+                    top: 1px
+                    fill: $primary-dark
+
+                span
+                    font-size: $size-m
+                    font-weight: $bold
+                    color: $primary-dark
+
+                    &:first-of-type
+                        padding: 0px 2px
+
+                    &:last-of-type
+                        padding-top: 2px
+
+                &.warning
+                    svg
+                        fill: $injury-dark
+
+                    span
+                        color: $injury-dark
+
+    section.actions
+        @include flexbox-center
+        background-color: $white
+        height: 80px
+        width: 100%
+
+        div
+            @include flexbox-center
+            width: 98%
+            max-width: 1024px
+            margin: auto
+            margin: 0px 4px
+            justify-content: space-between
+
+            .date
+                @include flexbox-center
+                width: auto
+                min-width: 180px
+                justify-content: flex-start
+
+                button
+                    cursor: pointer
+
+                    &.disabled
+                        cursor: default
+                        pointer-events: none
+
+                        svg
+                            fill: $grey-2
+
+
+                span
+                    margin: 0px 8px 2px
+
+            .lineup
+                @include flexbox-center
+                justify-content: flex-end
+                width: auto
+                min-width: 118px
+
+                button
+                    margin: 4px
+                    border-radius: 4px
+                    text-transform: capitalize
+                    background-color: $secondary
+                    padding: 4px 16px
+
+                    &.disabled
+                        cursor: default
+                        pointer-events: none
+                        background-color: $grey-2
+
+
+                    span
+                        color: $white
+                        font-weight: $medium
+
+    section.claim
+        @include flexbox-center-wrap
+        width: 100%
+        background-color: $grey-7
+
+        div
+            @include flexbox-center-wrap
+            width: 98%
+            max-width: 1024px
+            background-color: $grey-7
+
+            > div
+                @include flexbox-center
+                width: 100%
+                height: 48px
+                padding-left: 2%
+                border-bottom: 1px solid $secondary-light
+                justify-content: flex-start
+
+                &:last-of-type
+                    border-bottom: none
+
+                button
+                    @include flexbox-center
+                    cursor: pointer
+                    height: 18px
+                    width: 18px
+                    border-radius: 50%
+                    background-color: $secondary-light
+                    text-transform: uppercase
+                    margin-right: 16px
+
+                    > span
+                        color: $grey-7
+                        font-weight: $super-bold
+                        font-size: 9px
+
+                > span
+                    text-transform: capitalize
+                    color: $secondary-light
+
+                    &:first-of-type
+                        margin-right: 16px
+
+                    &.key
+                        font-weight: $medium
+                        text-align: right
+
+                    &.value
+                        font-weight: $thin
+                        text-align: left
+                        padding: 0px 8px 0px 4px
+
+
+    section.data
+        width: 98%
+        max-width: 1024px
+        margin: auto
+        margin-top: 32px
+        position: relative
+
+        div
+            background-color: $white
+            width: 100%
+            margin: 8px 0px
+            padding-top: 8px
+
+            table
+                width: 96%
+                margin: auto
+
+                &.goalie, &.team
+                    thead
+                        tr
+                            th
+                                &:nth-of-type(n+4)
+                                    width: 14.2857%
+
+                &.goalie, &.team
+                    tbody
+                        tr
+                            td
+                                &:nth-of-type(n+4)
+                                    width: 14.2857%
+
+                thead
+                    tr
+                        th
+                            @include sticky
+                            background-color: $white
+                            z-index: 4
+                            text-align: center
+                            height: 40px
+                            line-height: 40px
+                            text-transform: uppercase
+                            font-size: $size-xs
+
+                            span
+                                @include flexbox-center
+                                width: 100%
+                                height: 100%
+                                border-bottom: 1px solid $primary
+
+                            &:nth-of-type(1)
+                                width: 32px
+                                display: none
+
+                            &:nth-of-type(2)
+                                width: calc(36% - 32px)
+                                display: none
+
+                            &:nth-of-type(3)
+                                display: none
+
+                            &:nth-of-type(n+4)
+                                display: inline-block
+                                width: 12.5%
+
+                tbody
+                    width: 100%
+
+                    &.dress
+                        tr
+                            border-bottom: 1px solid $primary-light
+
+                            &:first-of-type
+                                border-top: 1px solid $primary
+
+                            &:last-of-type
+                                border-bottom: none
+
+                        &:first-of-type
+                            tr
+                                &:first-of-type
+                                    border-top: none
+
+                    &.bench
+                        tr
+                            background-color: $grey-1
+                            border-bottom: 1px solid $white
+
+                            &:last-of-type
+                                margin-bottom: 8px
+
+                            td
+                                &:nth-of-type(1)
+                                    .locked
+                                        svg
+                                            fill: $grey-5
+
+                                    .fab
+                                        &.toggle
+                                            background-color: $grey-1
+
+                                            span
+                                                background: $grey-5
+
+                                        &.active
+                                            ~ span
+                                                background-color: $grey-2
+
+                                                label
+                                                    svg
+                                                        fill: $grey-5
+
+
+
+                    &.injury
+                        tr
+                            background-color: $injury-light
+                            border-bottom: 1px solid $white
+
+                            &:last-of-type
+                                margin-bottom: 8px
+
+                            td
+                                &:nth-of-type(1)
+                                    .locked
+                                        svg
+                                            fill: $injury-dark
+
+                                    .fab
+                                        &.toggle
+                                            background-color: $injury-light
+
+                                            span
+                                                background: $injury-dark
+
+                                        &.active
+                                            ~ span
+                                                background-color: lighten($injury, 10%)
+
+                                                label
+                                                    svg
+                                                        fill: $injury-dark
+                    &.farm
+                        tr
+                            background-color: $farm-light
+                            border-bottom: 1px solid $white
+
+                            &:last-of-type
+                                margin-bottom: 8px
+
+                            td
+                                &:nth-of-type(1)
+                                    .locked
+                                        svg
+                                            fill: $farm-dark
+
+                                    .fab
+                                        &.toggle
+                                            background-color: $farm-light
+
+                                            span
+                                                background: $farm-dark
+
+                                        &.active
+                                            ~ span
+                                                background-color: lighten($farm, 10%)
+
+                                                label
+                                                    svg
+                                                        fill: $farm-dark
+
+                    tr
+                        @include flexbox-center-wrap
+                        width: 100%
+
+                        td
+                            height: 48px
+                            font-size: $size-m
+                            text-align: center
+
+                            &:nth-of-type(1)
+                                @include flexbox-center
+                                width: 32px
+
+                                .locked
+                                    @include flexbox-center
+
+                                    svg
+                                        fill: $secondary
+
+                                .fab
+                                    @include flexbox-center
+                                    position: absolute
+                                    width: 28px
+                                    height: 28px
+                                    border-radius: 50%
+                                    transition: all 0.3s ease-in-out
+                                    cursor: pointer
+                                    text-transform: uppercase
+
+                                    label
+                                        @include flexbox-center
+                                        width: 28px
+                                        height: 28px
+                                        border-radius: 50%
+                                        cursor: pointer
+
+                                        input
+                                            display: none
+
+                                        svg
+                                            z-index: 2
+
+                                    &.toggle
+                                        background-color: $white
+                                        z-index: 3
+
+                                        span
+                                            position: absolute
+                                            height: 2px
+                                            width: 40%
+                                            background: $secondary
+                                            border-radius: 2px
+                                            transform: rotate(0deg)
+                                            transition: .25s ease-in-out
+
+                                            &:nth-child(1)
+                                                top: 9px
+
+                                            &:nth-child(2), &:nth-child(3)
+                                                top: 13px
+
+                                            &:nth-child(4)
+                                                top: 17px
+
+                                    &.active
+                                        background-color: transparent
+
+                                        span
+                                            &:nth-child(1)
+                                                top: 13px
+                                                width: 0%
+                                                left: 50%
+
+                                            &:nth-child(2)
+                                                transform: rotate(45deg)
+
+                                            &:nth-child(3)
+                                                transform: rotate(-45deg)
+
+                                            &:nth-child(4)
+                                                top: 13px
+                                                width: 0%
+                                                left: 50%
+
+                                        ~ span
+                                            z-index: 2
+                                            background-color: $primary-light
+
+                                            &:nth-of-type(2)
+                                                transform: translateX(32px)
+
+                                            &:nth-of-type(3)
+                                                transform: translateX(64px + 6px)
+
+                                            &:nth-of-type(4)
+                                                transform: translateX(96px + 12px)
+
+                                            &:nth-of-type(5)
+                                                transform: translateX(128px + 18px)
+
+                                            &:nth-of-type(6)
+                                                transform: translateX(160px + 24px)
+
+                                            &:nth-of-type(7)
+                                                transform: translateX(192px + 30px)
+
+                                            label
+                                                svg
+                                                    fill: $secondary
+
+                            &:nth-of-type(2)
+                                @include flexbox-center
+                                width: calc(100% - 88px)
+                                justify-content: flex-start
+
+                                &.active > span,  &.active > span ~ svg
+                                    opacity: 0
+                                    pointer-events: none
+
+                                > svg:first-of-type
+                                    margin-right: 4px
+
+                                > span
+                                    font-weight: $semi-bold
+                                    transition: all 0.2s ease-in-out
+                                    padding-right: 4px
+
+                                    &:nth-child(1), &:nth-child(2)
+                                        cursor: pointer
+
+                                        &:hover
+                                            color: $secondary
+
+                                    &:nth-child(2)
+                                        letter-spacing: 1px
+
+                                    &:nth-child(n+2)
+                                        text-transform: uppercase
+                                        font-weight: $light
+                                        font-size: $size-xs
+
+                            &:nth-of-type(3)
+                                @include flexbox-center-wrap
+                                width: 56px
+                                justify-content: flex-end
+
+                                span
+                                    width: 100%
+                                    font-size: $size-xs
+                                    font-weight: $medium
+
+                                    &:last-of-type
+                                        font-weight: $light
+
+                            &:nth-of-type(n+4)
+                                @include flexbox-center
+                                height: 32px
+                                width: 12.5%
+                                color: $grey-7
+                                text-align: center
+                                border-top: 1px solid lighten($primary-light, 6%)
+                                font-size: $size-s
+
+                tfoot
+                    width: 100%
+                    height: 8px
+                    display: flex
+
+@media only screen and (min-width: 375px)
+    .franchise
+        section.data
+            div
+                table
+                    tbody
+                        tr
+                            td
+                                &:nth-child(2)
+                                    > span
+                                        &:nth-child(1)
+                                            display: flex
+
+@media only screen and (min-width: 768px)
+    .franchise
+        section.hero
+            h1
+                font-size: 64px
+                line-height: 64px
+
+        section.data
+            div
+                table
+                    &.goalie, &.team
+                        thead
+                            tr
+                                th
+                                    &:nth-of-type(n+4)
+                                        width: 8%
+
+                    &.goalie, &.team
+                        tbody
+                            tr
+                                td
+                                    &:nth-of-type(n+4)
+                                        width: 8%
+
+                    thead
+                        tr
+                            th
+                                &:nth-of-type(1)
+                                    width: 32px
+                                    display: inline-block
+
+                                &:nth-of-type(2)
+                                    width: calc(44% - 96px)
+                                    display: inline-block
+
+                                &:nth-of-type(3)
+                                    display: inline-block
+                                    width: 64px
+
+                                &:nth-of-type(n+4)
+                                    width: 7%
+
+                    tbody
+                        tr
+                            td
+                                height: 40px
+
+                                &:nth-of-type(2)
+                                    width: calc(44% - 96px)
+
+                                &:nth-of-type(3)
+                                    justify-content: center
+                                    width: 64px
+                                    padding-right: 0px
+
+                                &:nth-of-type(n+4)
+                                    font-size: $size-s
+                                    height: 40px
+                                    width: 7%
+
+
+
+@media only screen and (min-width: 1024px)
+    .franchise
+        section.data
+            div
+                table
+                    &.goalie, &.team
+                        thead
+                            tr
+                                th
+                                    &:nth-of-type(n+4)
+                                        width: 8%
+
+                    &.goalie, &.team
+                        tbody
+                            tr
+                                td
+                                    &:nth-of-type(n+4)
+                                        width: 8%
+
+                    thead
+                        tr
+                            th
+                                &:nth-of-type(2)
+                                    width: calc(44% - 96px)
+
+                                &:nth-of-type(n+4)
+                                    width: 7%
+
+                    tbody
+                        tr
+                            td
+                                &:nth-of-type(2)
+                                    width: calc(44% - 96px)
+
+                                &:nth-of-type(n+4)
+                                    width: 7%

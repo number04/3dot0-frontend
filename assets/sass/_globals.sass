@@ -1,0 +1,52 @@
+// base styles
+
+*, html
+	margin: 0
+	padding: 0
+	border: 0
+	text-decoration: none
+	outline: none
+	-webkit-box-sizing: border-box
+	box-sizing: border-box
+	font-weight: $light
+	font-family: $sans-serif
+	font-size: $size-b
+	color: $black
+	line-height: 1.4
+
+	body
+		background-color: $grey-1
+
+[v-cloak]
+	display: none
+
+table
+	border-collapse: collapse
+
+button
+	background-color: transparent
+	cursor: pointer
+	padding: 0
+	border: none
+	outline: none
+
+input[type=submit]
+    -webkit-appearance: none
+
+input:focus
+    outline: none
+
+ul
+	margin: 0px
+	padding: 0px
+	list-style: none
+
+li
+	list-style: none
+
+// franchise colors
+
+div
+	@for $i from 1 through 9
+		&.#{franchise}-#{$i}
+			background-color: nth($franchise-colors, $i)

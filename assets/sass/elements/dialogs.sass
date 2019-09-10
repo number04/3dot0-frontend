@@ -1,0 +1,65 @@
+section.error, section.warning, section.success
+    @include flexbox-center
+    width: 100%
+
+    div
+        @include flexbox-center-wrap
+        position: relative
+        width: 98%
+        max-width: 1024px
+        margin: auto
+        height: 40px
+
+        > span
+            text-transform: capitalize
+            font-size: $size-l
+            padding-right: 4px
+
+            &:first-child
+                font-weight: $extra-bold
+
+        button
+            @include flexbox-center
+            cursor: pointer
+            position: absolute
+            height: 24px
+            width: 24px
+            border-radius: 50%
+            right: 2%
+            font-weight: $medium
+            text-transform: uppercase
+            font-size: $size-xs
+
+
+section.error
+    background-color: $error
+
+    div
+        span
+            color: darken($error, 60%)
+
+        button
+            background-color: darken($error, 10%)
+            color: darken($error, 60%)
+
+section.warning
+    background-color: $warning
+
+    div
+        span
+            color: darken($warning, 60%)
+
+        button
+            background-color: darken($warning, 10%)
+            color: darken($warning, 60%)
+
+section.success
+    background-color: $success
+
+    div
+        span
+            color: darken($success, 40%)
+
+        button
+            background-color: darken($success, 10%)
+            color: darken($success, 40%)

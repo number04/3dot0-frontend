@@ -1,0 +1,100 @@
+.dropdown
+    height: 32px
+    position: relative
+    margin: 8px
+    display: inline-block
+    vertical-align: middle
+
+    &.type
+        min-width: 112px
+
+    &.position
+        min-width: 32px
+
+    &.team
+        min-width: 80px
+
+        .dropdown-menu
+            overflow-y: scroll
+
+    &.franchise-matchup
+        min-width: 72px
+
+    &.range
+        min-width: 112px
+
+    &.stat
+        min-width: 118px
+
+    &.roster
+        min-width: 80px
+
+    .dropdown-toggle
+        @include flexbox-center
+        color: $grey-7
+        height: 32px
+        width: auto
+        text-transform: capitalize
+        border-bottom: 1px solid $grey-3
+        border-top: 1px solid $white
+        border-left: 1px solid $white
+        border-right: 1px solid $white
+
+        span.toggle
+            color: $grey-2
+
+        &.drop
+            border-bottom: 1px solid $white
+            border-top: 1px solid $grey-2
+            border-left: 1px solid $grey-2
+            border-right: 1px solid $grey-2
+            border-top-left-radius: 2px
+            border-top-right-radius: 2px
+
+            &:hover
+                cursor: default
+                border-bottom: 1px solid $white
+
+        &:hover
+            cursor: pointer
+            border-bottom: 1px solid $secondary
+
+    .dropdown-enter
+        opacity: 0
+        @include transition(all .05s ease-out)
+
+    .dropdown-enter-to
+        opacity: 1
+        @include transition(all .1s ease-out)
+
+    .dropdown-menu
+        z-index: 5
+        list-style: none
+        text-align: left
+        background-color: $white
+        border-bottom: 1px solid $grey-2
+        border-left: 1px solid $grey-2
+        border-right: 1px solid $grey-2
+        border-bottom-left-radius: 2px
+        border-bottom-right-radius: 2px
+        position: relative
+        max-height: calc(100vh - 368px)
+
+        > li
+            > span
+                @include flexbox-center
+                width: 100%
+                text-transform: capitalize
+                height: 32px
+
+                &.selected
+                    background-color: $grey-1
+
+                    &:hover
+                        cursor: default
+                        color: $black
+
+                &:hover
+                    cursor: pointer
+                    color: $secondary
+                    background-color: $grey-1

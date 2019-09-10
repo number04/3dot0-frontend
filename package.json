@@ -1,0 +1,25 @@
+{
+  "name": "frontEnd",
+  "version": "1.0.0",
+  "description": "My ultimate Nuxt.js project",
+  "author": "number04",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/auth": "^4.5.3",
+    "@nuxtjs/axios": "^5.0.0",
+    "cross-env": "^5.2.0",
+    "moment": "^2.24.0",
+    "node-sass": "^4.11.0",
+    "nuxt": "^2.0.0",
+    "sass-loader": "^7.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
