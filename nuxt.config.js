@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const env = require('dotenv').config()
 
 module.exports = {
   vue: {
@@ -9,6 +10,7 @@ module.exports = {
   },
 
   mode: 'universal',
+  env: env.parsed,
 
   /*
   ** Headers of the page
@@ -94,7 +96,7 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    baseURL: 'http://backEnd.test/api'
+    baseURL: env.parsed.API_URL
   },
 
   /*
