@@ -49,12 +49,12 @@
                 window.addEventListener("click", this.close)
             },
 
-            close(e) {
-                if (!this.$refs.dropdown.contains(e.target)) {
-                    this.drop = false
-                    window.removeEventListener("click", this.close)
-                }
-            }
+            // close(e) {
+            //     if (!this.$refs.dropdown.contains(e.target)) {
+            //         this.drop = false
+            //         window.removeEventListener("click", this.close)
+            //     }
+            // }
         }
     }
 </script>
