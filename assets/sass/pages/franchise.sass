@@ -184,6 +184,54 @@
                 width: 96%
                 margin: auto
 
+                &.skater
+                    tbody
+                        &.dress
+                            tr
+                                &:nth-of-type(1)
+                                    @include flexbox-center
+                                    position: relative
+                                    height: 8px
+                                    border-bottom: none
+
+                                    > td
+                                        @include flexbox-center
+                                        width: 100%
+
+                                        span
+                                            @include flexbox-center
+                                            position: absolute
+                                            background-color: $white
+                                            color: $primary-dark
+                                            text-transform: capitalize
+                                            font-size: $size-xs
+
+                                            &:nth-of-type(1)
+                                                padding-right: 8px
+                                                left: 0
+                                                z-index: 6
+
+
+                                            &:nth-of-type(2)
+                                                z-index: 0
+                                                position: absolute
+                                                width: 100%
+                                                border-top: 1px solid $primary
+
+                                &:nth-of-type(2)
+                                    border-top: none
+
+                            &:first-of-type
+                                tr
+                                    &:nth-of-type(1)
+                                        > td
+                                            span
+                                                &:nth-of-type(1)
+                                                    top: -8px
+
+                                                &:nth-of-type(2)
+                                                    border-top: none
+
                 &.goalie, &.team
                     thead
                         tr
@@ -200,6 +248,10 @@
 
                 thead
                     tr
+                        &.sticky
+                            th
+                                z-index: 8
+
                         th
                             @include sticky
                             background-color: $white
@@ -238,8 +290,15 @@
                         tr
                             border-bottom: 1px solid $primary-light
 
-                            &:first-of-type
-                                border-top: 1px solid $primary
+                            // &:first-of-type
+                            //     // border-top: 1px solid $primary
+                            //     background-color: $primary-light
+                            //     height: 18px
+                            //
+                            //     td
+                            //         color: $primary-dark
+                            //         text-transform: capitalize
+                            //         font-size: $size-xs
 
                             &:last-of-type
                                 border-bottom: none
@@ -464,7 +523,7 @@
                                     transition: all 0.2s ease-in-out
                                     padding-right: 4px
 
-                                    &:nth-child(1), &:nth-child(2)
+                                    &:nth-child(1)
                                         cursor: pointer
 
                                         &:hover
@@ -575,6 +634,7 @@
 
                                 &:nth-of-type(n+4)
                                     font-size: $size-s
+                                    border-top: none
                                     height: 40px
                                     width: 7%
 

@@ -119,9 +119,9 @@
 
         <section class="data">
             <div>
-                <table>
+                <table class="skater">
                     <thead>
-                        <tr>
+                        <tr id="header">
                             <th>
                                 <span></span>
                             </th>
@@ -169,22 +169,57 @@
                     </thead>
 
                     <tbody class="dress">
+                        <tr>
+                            <td>
+                                <span>c</span>
+                                <span class="hr" />
+                            </td>
+                        </tr>
+
                         <trLineup v-for="player in roster('skater', 'c')" :key="player.playerId" :player="player" />
                     </tbody>
 
                     <tbody class="dress">
+                        <tr>
+                            <td>
+                                <span>l</span>
+                                <span class="hr" />
+                            </td>
+                        </tr>
+
                         <trLineup v-for="player in roster('skater', 'l')" :key="player.playerId" :player="player" />
                     </tbody>
 
                     <tbody class="dress">
+                        <tr>
+                            <td>
+                                <span>r</span>
+                                <span class="hr" />
+                            </td>
+                        </tr>
+
                         <trLineup v-for="player in roster('skater', 'r')" :key="player.playerId" :player="player" />
                     </tbody>
 
                     <tbody class="dress">
+                        <tr>
+                            <td>
+                                <span>d</span>
+                                <span class="hr" />
+                            </td>
+                        </tr>
+
                         <trLineup v-for="player in roster('skater', 'd')" :key="player.playerId" :player="player" />
                     </tbody>
 
                     <tbody class="dress">
+                        <tr>
+                            <td>
+                                <span>s</span>
+                                <span class="hr" />
+                            </td>
+                        </tr>
+
                         <trLineup v-for="player in roster('skater', 's')" :key="player.playerId" :player="player" />
                     </tbody>
 
@@ -459,6 +494,16 @@
                 return skater + goalie + team - this.count.skater.i - this.count.goalie.i
             },
 
+            handleScroll () {
+                let header = document.getElementById("header")
+
+                if (window.pageYOffset > 407) {
+                    header.classList.add("sticky");
+                } else {
+                    header.classList.remove("sticky");
+                }
+            },
+
             clearSuccess() {
                 this.success = ''
             }
@@ -522,6 +567,10 @@
             this.interval = setInterval(() => this.getFranchise(), 300000);
         },
 
+        beforeMount () {
+            window.addEventListener('scroll', this.handleScroll)
+        },
+
         mounted() {
             this.getFranchise()
             this.getClaim()
@@ -529,6 +578,7 @@
 
         beforeDestroy() {
           clearInterval(this.interval)
+          window.removeEventListener('scroll', this.handleScroll)
         }
     }
 </script>
