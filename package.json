@@ -1,7 +1,7 @@
 {
-  "name": "frontEnd",
+  "name": "theLeague",
   "version": "1.0.0",
-  "description": "My ultimate Nuxt.js project",
+  "description": "Fantasy hockey at its best",
   "author": "number04",
   "private": true,
   "scripts": {

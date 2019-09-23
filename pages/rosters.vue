@@ -1,5 +1,7 @@
 <template>
     <div class="rosters">
+        <loading v-if="loadingPage" />
+
         <modal player />
 
         <section class="hero">
@@ -234,6 +236,7 @@
 
                 this.franchise = response.data.data[0]
                 this.optionFranchise()
+                this.$store.dispatch('clearLoading')
             },
 
             async getRoster() {

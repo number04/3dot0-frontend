@@ -1,5 +1,7 @@
 <template>
     <div class="franchise">
+        <loading v-if="loadingPage" />
+
         <modal player />
 
         <section class="hero">
@@ -423,6 +425,7 @@
                 this.franchise = response.data.data[0]
                 this.warning = true
                 this.clearSuccess()
+                this.$store.dispatch('clearLoading')
             },
 
             async getClaim() {
@@ -577,8 +580,8 @@
         },
 
         beforeDestroy() {
-          clearInterval(this.interval)
           window.removeEventListener('scroll', this.handleScroll)
+          clearInterval(this.interval)
         }
     }
 </script>

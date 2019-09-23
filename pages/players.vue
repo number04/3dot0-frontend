@@ -1,5 +1,7 @@
 <template>
     <div class="players">
+        <loading v-if="loadingPage" />
+
         <modal player />
 
         <section class="hero">
@@ -423,6 +425,7 @@
                 this.players = response.data.data,
                 this.filter.meta = response.data.meta
                 this.filter.change = false
+                this.$store.dispatch('clearLoading')
             },
 
             async getClaim() {

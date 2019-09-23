@@ -23,12 +23,13 @@ const Mixins = {
             computed: {
                 ...mapGetters({
                     franchiseId: 'getFranchiseId',
-                    // loadingPage: 'getLoadingPage',
+                    loadingPage: 'getLoadingPage',
                     modalPlayer: 'getModalPlayer',
                     currentDate: 'getCurrentDate',
                     rosterSize: 'getRosterSize',
                     goalieStarts: 'getGoalieStarts',
                     franchiseName: 'getFranchiseName',
+                    franchiseTag: 'getFranchiseTag',
                     currentMatchup: 'getCurrentMatchup',
                     weeklyAdds: 'getWeeklyAdds'
                 })

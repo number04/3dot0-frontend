@@ -1,11 +1,18 @@
 <template>
     <div class="dropdown">
-        <li class="dropdown-toggle" :class="{ 'drop' : drop }" @click="toggle()">
-            <span :class="{ 'toggle' : drop }">{{ selectedOption }}</span>
+        <li class="dropdown-toggle" :class="{ 'drop' : drop }" ref="dropdown" @click="toggle()">
+            <span
+                :class="{
+                    'toggle' : drop,
+                    'capitalize-totals' : selectedOption === 'totals',
+                    'capitalize-all' : selectedOption === 'all teams',
+                    'capitalize-franchise' : selectedOption === 'franchise',
+                }"
+            >{{ selectedOption }}</span>
         </li>
 
         <transition name="dropdown">
-            <ul class="dropdown-menu" ref="dropdown" v-if="drop">
+            <ul class="dropdown-menu" v-if="drop">
                 <li v-for="option in options">
                     <span :class="{ 'selected' : option === selectedOption }" @click="updateOption(option)">{{ option }}</span>
                 </li>
@@ -49,12 +56,12 @@
                 window.addEventListener("click", this.close)
             },
 
-            // close(e) {
-            //     if (!this.$refs.dropdown.contains(e.target)) {
-            //         this.drop = false
-            //         window.removeEventListener("click", this.close)
-            //     }
-            // }
+            close(e) {
+                if (!this.$refs.dropdown.contains(e.target)) {
+                    this.drop = false
+                    window.removeEventListener("click", this.close)
+                }
+            }
         }
     }
 </script>

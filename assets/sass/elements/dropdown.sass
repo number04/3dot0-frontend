@@ -5,17 +5,36 @@
     display: inline-block
     vertical-align: middle
 
+    &.team, &.franchise-transaction, &.roster, &.franchise-matchup
+        .dropdown-menu
+            overflow-y: scroll
+
+        li
+            span
+                text-transform: uppercase
+
+                &.capitalize-totals, &.capitalize-all, &.capitalize-franchise
+                    text-transform: capitalize
+
+        ul
+            li
+                &:nth-of-type(1)
+                    span
+                        text-transform: capitalize
+
+                &:nth-of-type(n+2)
+                    span
+                        text-transform: uppercase
+                        font-size: $size-s
+
     &.type
         min-width: 112px
 
     &.position
         min-width: 32px
 
-    &.team
+    &.team, &.franchise-transaction, &.roster
         min-width: 80px
-
-        .dropdown-menu
-            overflow-y: scroll
 
     &.franchise-matchup
         min-width: 72px
@@ -24,10 +43,10 @@
         min-width: 112px
 
     &.stat
-        min-width: 118px
+        min-width: 124px
 
-    &.roster
-        min-width: 80px
+    &.type
+        min-width: 118px
 
     .dropdown-toggle
         @include flexbox-center

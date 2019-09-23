@@ -31,7 +31,7 @@
                     if (this.name == 'franchise-7') { return '#a59079' }
                     if (this.name == 'franchise-8') { return '#333c73' }
 
-                    return 'currentColor'
+                    // return 'currentColor'
                 }
             }
         }

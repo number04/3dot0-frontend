@@ -1,5 +1,7 @@
 <template>
     <div class="scoreboard">
+        <loading v-if="loadingPage" />
+
         <modal player />
 
         <section class="hero">
@@ -599,6 +601,7 @@
 
                 this.stat()
                 this.filter.rank = false
+                this.$store.dispatch('clearLoading')
             },
 
             next() {

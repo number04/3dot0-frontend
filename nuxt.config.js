@@ -48,7 +48,9 @@ module.exports = {
 
   router: {
         middleware: [
-            'auth'
+            'auth',
+            'loading',
+            'unauthenticated'
         ]
     },
 

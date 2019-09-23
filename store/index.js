@@ -21,6 +21,10 @@ export const mutations = ({
         state.loading.modal = data
     },
 
+    LOADING_PAGE(state, data) {
+        state.loading.page = data
+    },
+
     SET_MODAL(state, data) {
         state.modal.show = data
     },
@@ -51,6 +55,14 @@ export const actions = ({
 
     setConfig({ commit }, data) {
         commit('SET_CONFIG', data)
+    },
+
+    setLoading({ commit }) {
+        commit('LOADING_PAGE', true)
+    },
+
+    clearLoading({ commit }) {
+        commit('LOADING_PAGE', false)
     }
 })
 
@@ -59,6 +71,10 @@ export const getters = ({
         if (state.auth.loggedIn) {
             return state.auth.user.franchiseId
         }
+    },
+
+    getLoadingPage(state) {
+        return state.loading.page
     },
 
     getModalPlayer(state) {
@@ -77,6 +93,22 @@ export const getters = ({
         return state.config.franchise.total
     },
 
+    getKing(state) {
+        return state.config.awards.king
+    },
+
+    getKingScore(state) {
+        return state.config.awards.king[0].score
+    },
+
+    getTurkey(state) {
+        return state.config.awards.turkey
+    },
+
+    getTurkeyScore(state) {
+        return state.config.awards.turkey[0].score
+    },
+
     getDateYMD(state) {
         return (date) => {
             return state.config.date.season[date - 1].ymd
@@ -92,6 +124,12 @@ export const getters = ({
     getFranchiseName(state) {
         return (franchiseId) => {
             return state.config.franchise.detail[franchiseId - 1].name
+        }
+    },
+
+    getFranchiseTag(state) {
+        return (franchiseId) => {
+            return state.config.franchise.detail[franchiseId - 1].tag
         }
     },
 
