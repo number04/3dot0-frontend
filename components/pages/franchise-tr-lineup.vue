@@ -100,7 +100,7 @@
 
             <!-- keeper -->
 
-            <span v-if="player.draftContract != 'fa-1'" class="fab" @click="fab = ''">
+            <span v-if="player.draft != 'fa'" class="fab" @click="fab = ''">
                 <label>
                     <icon v-if="player.keeper != 1" name="heart" h="16" w="16" color="transparent" />
                     <icon v-else name="heart-fill" h="16" w="16" color="transparent" />

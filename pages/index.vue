@@ -45,29 +45,29 @@
                     <caption>transactions</caption>
 
                     <tbody>
-                        <tr v-for="transaction in transactions">
-                            <td v-if="transaction.transaction.type === 'drop'">
+                        <tr v-for="trans in transactions">
+                            <td v-if="trans.transaction.type === 'drop'">
                                 <icon name="drop" h="14" w="14" color="#42a0a8" />
                             </td>
 
                             <td v-else>
-                                <icon :name="transaction.transaction.type" h="18" w="18" color="#42a0a8" />
+                                <icon :name="trans.transaction.type" h="18" w="18" color="#42a0a8" />
                             </td>
 
                             <td>
-                                <span @click="modalOpen(transaction.transaction.player.href)">{{ transaction.transaction.player.playerName }}</span>
-                                <span v-if="!transaction.transaction.player.positionSecondary">{{ transaction.transaction.player.position }}</span>
-                                <span v-else>{{ transaction.transaction.player.position }},{{ trans.player.positionSecondary }}</span>
+                                <span @click="modalOpen(trans.transaction.player.href)">{{ trans.transaction.player.playerName }}</span>
+                                <span v-if="!trans.transaction.player.positionSecondary">{{ trans.transaction.player.position }}</span>
+                                <span v-else>{{ trans.transaction.player.position }},{{ trans.transaction.player.positionSecondary }}</span>
                                 <span>|</span>
-                                <span>{{ transaction.transaction.player.nhl }}</span>
-                                <icon v-if="transaction.transaction.player.isInjured" name="injury" h="12" w="12" color="#b86567" />
+                                <span>{{ trans.transaction.player.nhl }}</span>
+                                <icon v-if="trans.transaction.player.isInjured" name="injury" h="12" w="12" color="#b86567" />
                             </td>
 
                             <td>
-                                <icon :name="'franchise-' + transaction.franchiseId" w="18" h="18" color="#42a0a8" />
+                                <icon :name="'franchise-' + trans.franchiseId" w="18" h="18" color="#42a0a8" />
                             </td>
 
-                            <td>{{ transaction.transaction.date }}</td>
+                            <td>{{ trans.transaction.date }}</td>
                         </tr>
                     </tbody>
 
@@ -112,6 +112,18 @@
                                     <icon name="trade" h="18" w="18" color="#42a0a8" />
                                 </span>
                             </th>
+
+                            <th>
+                                <span>
+                                    <icon name="king" h="18" w="18" color="#42a0a8" />
+                                </span>
+                            </th>
+
+                            <th>
+                                <span>
+                                    <icon name="turkey" h="18" w="18" color="#42a0a8" />
+                                </span>
+                            </th>
                         </tr>
                     </thead>
 
@@ -127,6 +139,8 @@
                             <td>{{ franchise.sign}}</td>
                             <td>{{ franchise.release }}</td>
                             <td>{{ franchise.trade }}</td>
+                            <td>{{ franchise.king }}</td>
+                            <td>{{ franchise.turkey }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -280,6 +294,11 @@
                 this.standing.totals = response.data.totals[0]
                 this.standing.topScore = response.data.totals[0][0]['total']
                 this.$store.dispatch('clearLoading')
+            },
+
+            modalOpen(href) {
+                this.$store.dispatch('setModalPlayer', href)
+                this.$store.dispatch('setModal', true)
             },
 
             franchise() {

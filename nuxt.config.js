@@ -50,7 +50,6 @@ module.exports = {
         middleware: [
             'auth',
             'loading'
-            // 'unauthenticated'
         ]
     },
 

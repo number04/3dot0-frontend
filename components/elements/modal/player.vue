@@ -13,11 +13,11 @@
 
             <div>
                 <span class="key">contract:</span>
-                <span class="value">{{ player.draftContract }}</span>
-                <span v-if="player.contractStatus" class="value">{{ player.contractStatus }}</span>
-                <span v-if="player.draftContract != 'fa-1' && player.draftContract != 'fa-0'" class="divider">|</span>
-                <span v-if="player.draftContract != 'fa-1' && player.draftContract != 'fa-0'" class="key">cap hit:</span>
-                <span v-if="player.draftContract != 'fa-1' && player.draftContract != 'fa-0'" class="value">{{ player.capHit }}</span>
+                <span class="value">{{ player.draft }}</span>
+                <span v-if="player.contract" class="value">{{ player.contract }}</span>
+                <span v-if="player.draft != 'fa'" class="divider">|</span>
+                <span v-if="player.draft != 'fa'" class="key">cap hit:</span>
+                <span v-if="player.draft != 'fa'" class="value">{{ player.capHit }}</span>
                 <span class="divider">|</span>
                 <span class="key">age:</span>
                 <span class="value">{{ player.age }}</span>
