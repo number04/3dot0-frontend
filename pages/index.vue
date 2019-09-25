@@ -138,11 +138,13 @@
                         </span>
 
                         <div>
-                            <p>matchup {{ currentMatchup - 1 }} king</p>
+                            <p v-if="currentMatchup === 1">matchup king</p>
+                            <p v-else>matchup {{ currentMatchup - 1 }} king</p>
 
                             <p>
                                 <span v-for="id in king">{{ franchiseTag(id.franchise_id) }}</span>
-                                <span>{{ kingScore }}</span>
+                                <span v-if="king[0]">{{ king[0].score }}</span>
+                                <span v-else>-</span>
                             </p>
                         </div>
                     </div>
@@ -153,11 +155,13 @@
                         </span>
 
                         <div>
-                            <p>matchup {{ currentMatchup - 1 }} turkey</p>
+                            <p v-if="currentMatchup === 1">matchup turkey</p>
+                            <p v-else>matchup {{ currentMatchup - 1 }} turkey</p>
 
                             <p>
                                 <span v-for="id in turkey">{{ franchiseTag(id.franchise_id) }}</span>
-                                <span>{{ turkeyScore }}</span>
+                                <span v-if="turkey[0]">{{ turkey[0].score }}</span>
+                                <span v-else>-</span>
                             </p>
                         </div>
                     </div>
@@ -331,14 +335,6 @@
 
             turkey() {
                 return this.$store.getters.getTurkey
-            },
-
-            kingScore() {
-                return this.$store.getters.getKingScore
-            },
-
-            turkeyScore() {
-                return this.$store.getters.getTurkeyScore
             }
         },
 

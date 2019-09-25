@@ -97,16 +97,8 @@ export const getters = ({
         return state.config.awards.king
     },
 
-    getKingScore(state) {
-        return state.config.awards.king[0].score
-    },
-
     getTurkey(state) {
         return state.config.awards.turkey
-    },
-
-    getTurkeyScore(state) {
-        return state.config.awards.turkey[0].score
     },
 
     getDateYMD(state) {

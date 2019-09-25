@@ -1,5 +1,5 @@
 <template>
-    <transition name="loading">
+    <transition name="fade">
         <div class="loading">
             <icon name="spinner" w="80" h="80" />
         </div>
