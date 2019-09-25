@@ -204,22 +204,22 @@
                     </caption>
 
                     <tbody>
-                        <tr v-for="total in standing.totals" >
+                        <tr v-for="total in standing.total" >
 
-                            <td :style="{ width: total.total/standing.topScore * 100 + '%' }">
+                            <td :style="{ width: total.score/standing.topScore * 100 + '%' }">
 
-                                <span :style="{ width: total.skater/total.total * 100 + '%' }">
+                                <span :style="{ width: total.skater/total.score * 100 + '%' }">
                                     <span>
                                         <icon :name="'franchise-' + total.franchiseId" h="18" w="18" color="#42a0a8" />
                                     </span>
 
-                                    <span>{{ total.total }}</span>
+                                    <span>{{ total.score }}</span>
                                     <span>{{ total.skater }}</span>
                                 </span>
 
-                                <span :style="{ width: total.goalie/total.total * 100 + '%' }">{{ total.goalie }}</span>
+                                <span :style="{ width: total.goalie/total.score * 100 + '%' }">{{ total.goalie }}</span>
 
-                                <span :style="{ width: total.team/total.total * 100 + '%' }">{{ total.team }}</span>
+                                <span :style="{ width: total.team/total.score * 100 + '%' }">{{ total.team }}</span>
                             </td>
                         </tr>
                     </tbody>
@@ -237,7 +237,7 @@
                 detail: [],
                 standing: {
                     matchup: [],
-                    totals:[],
+                    total:[],
                     isLoading: true,
                     topScore: ''
                 },
@@ -291,9 +291,12 @@
                 let response = await this.$axios.get('/standing:' + this.matchup + '?filter[id]=' + this.filter.standing)
 
                 this.standing.matchup = response.data.data
-                this.standing.totals = response.data.totals[0]
-                this.standing.topScore = response.data.totals[0][0]['total']
+                this.standing.total = response.data.total[0]    
                 this.$store.dispatch('clearLoading')
+
+                if (response.data.total[0]) {
+                    this.standing.topScore = response.data.total[0][0]['score']
+                }
             },
 
             modalOpen(href) {
