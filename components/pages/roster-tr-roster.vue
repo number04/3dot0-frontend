@@ -32,7 +32,8 @@
             <span v-else>{{ player.position }},{{ player.positionSecondary }}</span>
             <span>|</span>
             <span>{{ player.nhl }}</span>
-            <icon v-if="player.isInjured" name="injury" h="12" w="12" color="#b86567" />
+            <icon v-if="player.isInjured == 1" name="injury" h="12" w="12" color="#b86567" />
+            <icon v-if="player.isInjured == 2" name="out" h="12" w="12" color="#b86567" />
             <icon v-if="player.block" name="suitcase-fill" h="12" w="12" color="#7489a9" />
         </td>
     </tr>

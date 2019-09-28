@@ -80,7 +80,7 @@
 
             <!-- injury -->
 
-            <span v-if="player.isInjured && player.games.today.lineup != 'i'" class="fab">
+            <span v-if="player.isInjured == 1 && player.games.today.lineup != 'i'" class="fab">
                 <label>
                     <icon name="injury" h="16" w="16" color="transparent" />
 
@@ -121,7 +121,8 @@
             <span v-else>{{ player.position }},{{ player.positionSecondary }}</span>
             <span>|</span>
             <span>{{ player.nhl }}</span>
-            <icon v-if="player.isInjured" name="injury" h="12" w="12" color="#b86567" />
+            <icon v-if="player.isInjured == 1" name="injury" h="12" w="12" color="#b86567" />
+            <icon v-if="player.isInjured == 2" name="out" h="12" w="12" color="#b86567" />
             <icon v-if="player.keeper" name="heart-fill" h="12" w="12" color="#7489a9" />
         </td>
 

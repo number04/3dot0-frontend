@@ -7,6 +7,7 @@
             <span>|</span>
             <span>{{ player.nhl }}</span>
             <icon v-if="player.isInjured == 1" name="injury" h="12" w="12" color="#b86567" />
+            <icon v-if="player.isInjured == 2" name="out" h="12" w="12" color="#b86567" />
         </td>
 
         <td v-for="stat in player.stats" :key="stat.id">{{ stat }}</td>
