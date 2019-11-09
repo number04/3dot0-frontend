@@ -86,7 +86,7 @@
             </div>
 
             <div class="table-totals" v-if="filter.id === 0">
-                <span :class="{ 'filter-change' : filter.rank }" />
+                <span :class="{ 'filter-change' : filter.score }" />
 
                 <div>
                     <table>
@@ -112,17 +112,17 @@
                         </thead>
 
                         <tbody>
-                            <tr v-for="rank in ranks" :key="rank.franchise_id" @click="e => e.currentTarget.classList.toggle('show')">
+                            <tr v-for="score in scoreboard" :key="score.franchise_id" @click="e => e.currentTarget.classList.toggle('show')">
                                 <td>
-                                    <span>{{ franchiseName(rank.franchise_id) }}</span>
+                                    <span>{{ franchiseName(score.franchise_id) }}</span>
 
                                     <span>
-                                        <icon :name="'franchise-' + rank.franchise_id" w="18" h="18" color="#465771" />
+                                        <icon :name="'franchise-' + score.franchise_id" w="18" h="18" color="#465771" />
                                     </span>
                                 </td>
 
                                 <td>
-                                    <span>{{ rank.r_total }}</span>
+                                    <span>{{ score.score }}</span>
                                 </td>
 
                                 <td>
@@ -131,7 +131,7 @@
                                     </span>
 
                                     <span class="dots-small" />
-                                    <span>{{ goalieStarts(rank.franchise_id) }}</span>
+                                    <span>{{ goalieStarts(score.franchise_id) }}</span>
                                 </td>
 
                                 <td>
@@ -140,91 +140,91 @@
                                     </span>
 
                                     <span class="dots-small" />
-                                    <span>{{ weeklyAdds(rank.franchise_id) }}</span>
+                                    <span>{{ weeklyAdds(score.franchise_id) }}</span>
                                 </td>
 
                                 <td>
                                     <span class="th-small">gp</span>
                                     <span class="dots-small" />
-                                    <span>{{ rank.stats.skater.games_played }}</span>
+                                    <span>{{ score.stats.skater.games_played }}</span>
                                 </td>
 
-                                <td :class="{ 'tops' : rank.rank.goals === '1' }">
+                                <td :class="{ 'tops' : score.stats_score.goals === '1' }">
                                     <span class="th-small">g</span>
                                     <span class="dots-small" />
-                                    <span>{{ rank.stats.skater.goals }}</span>
+                                    <span>{{ score.stats.skater.goals }}</span>
                                 </td>
 
-                                <td :class="{ 'tops' : rank.rank.assists === '1' }">
+                                <td :class="{ 'tops' : score.stats_score.assists === '1' }">
                                     <span class="th-small">a</span>
                                     <span class="dots-small" />
-                                    <span>{{ rank.stats.skater.assists }}</span>
+                                    <span>{{ score.stats.skater.assists }}</span>
                                 </td>
 
-                                <td :class="{ 'tops' : rank.rank.pointsSkater === '1' }">
+                                <td :class="{ 'tops' : score.stats_score.pointsSkater === '1' }">
                                     <span class="th-small">pts</span>
                                     <span class="dots-small" />
-                                    <span>{{ rank.stats.skater.points_skater }}</span>
+                                    <span>{{ score.stats.skater.points_skater }}</span>
                                 </td>
 
-                                <td :class="{ 'tops' : rank.rank.hits === '1' }">
+                                <td :class="{ 'tops' : score.stats_score.hits === '1' }">
                                     <span class="th-small">h</span>
                                     <span class="dots-small" />
-                                    <span>{{ rank.stats.skater.hits }}</span>
+                                    <span>{{ score.stats.skater.hits }}</span>
                                 </td>
 
-                                <td :class="{ 'tops' : rank.rank.shots === '1' }">
+                                <td :class="{ 'tops' : score.stats_score.shots === '1' }">
                                     <span class="th-small">s</span>
                                     <span class="dots-small" />
-                                    <span>{{ rank.stats.skater.shots }}</span>
+                                    <span>{{ score.stats.skater.shots }}</span>
                                 </td>
 
-                                <td :class="{ 'tops' : rank.rank.blockedShots === '1' }">
+                                <td :class="{ 'tops' : score.stats_score.blockedShots === '1' }">
                                     <span class="th-small">b</span>
                                     <span class="dots-small" />
-                                    <span>{{ rank.stats.skater.blocked_shots }}</span>
+                                    <span>{{ score.stats.skater.blocked_shots }}</span>
                                 </td>
 
-                                <td :class="{ 'tops' : rank.rank.faceoffWins === '1' }">
+                                <td :class="{ 'tops' : score.stats_score.faceoffWins === '1' }">
                                     <span class="th-small">fow</span>
                                     <span class="dots-small" />
-                                    <span>{{ rank.stats.skater.faceoff_wins }}</span>
+                                    <span>{{ score.stats.skater.faceoff_wins }}</span>
                                 </td>
 
                                 <td>
                                     <span class="th-small">gp</span>
                                     <span class="dots-small" />
-                                    <span>{{ rank.stats.goalie.games_played }}</span>
+                                    <span>{{ score.stats.goalie.games_played }}</span>
                                 </td>
 
-                                <td :class="{ 'tops' : rank.rank.saves === '1' }">
+                                <td :class="{ 'tops' : score.stats_score.saves === '1' }">
                                     <span class="th-small">sv</span>
                                     <span class="dots-small" />
-                                    <span>{{ rank.stats.goalie.saves }}</span>
+                                    <span>{{ score.stats.goalie.saves }}</span>
                                 </td>
 
-                                <td :class="{ 'tops' : rank.rank.savePercentage === '1' }">
+                                <td :class="{ 'tops' : score.stats_score.savePercentage === '1' }">
                                     <span class="th-small">svp</span>
                                     <span class="dots-small" />
-                                    <span>{{ rank.stats.goalie.save_percentage }}</span>
+                                    <span>{{ score.stats.goalie.save_percentage }}</span>
                                 </td>
 
-                                <td :class="{ 'tops' : rank.rank.goalsAgainstAverage === '1' }">
+                                <td :class="{ 'tops' : score.stats_score.goalsAgainstAverage === '1' }">
                                     <span class="th-small">gaa</span>
                                     <span class="dots-small" />
-                                    <span>{{ rank.stats.goalie.goals_against_average }}</span>
+                                    <span>{{ score.stats.goalie.goals_against_average }}</span>
                                 </td>
 
                                 <td>
                                     <span class="th-small">gp</span>
                                     <span class="dots-small" />
-                                    <span>{{ rank.stats.team.games_played }}</span>
+                                    <span>{{ score.stats.team.games_played }}</span>
                                 </td>
 
-                                <td :class="{ 'tops' : rank.rank.pointsTeam === '1' }">
+                                <td :class="{ 'tops' : score.stats_score.pointsTeam === '1' }">
                                     <span class="th-small">pts</span>
                                     <span class="dots-small" />
-                                    <span>{{ rank.stats.team.points_team }}</span>
+                                    <span>{{ score.stats.team.points_team }}</span>
                                 </td>
                             </tr>
                         </tbody>
@@ -254,7 +254,7 @@
                         <tbody>
                             <trMatchup
                                 v-for="player in players.matchup"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.position === 'c'"
                                 :player="player" />
                         </tbody>
@@ -262,7 +262,7 @@
                         <tbody>
                             <trMatchup
                                 v-for="player in players.matchup"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.position === 'l'"
                                 :player="player" />
                         </tbody>
@@ -270,7 +270,7 @@
                         <tbody>
                             <trMatchup
                                 v-for="player in players.matchup"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.position === 'r'"
                                 :player="player" />
                         </tbody>
@@ -278,7 +278,7 @@
                         <tbody>
                             <trMatchup
                                 v-for="player in players.matchup"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.position === 'd'"
                                 :player="player" />
                         </tbody>
@@ -303,7 +303,7 @@
                         <tbody>
                             <trMatchup
                                 v-for="player in players.matchup"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.position === 'g'"
                                 :player="player" />
                         </tbody>
@@ -330,7 +330,7 @@
                         <tbody>
                             <trMatchup
                                 v-for="player in players.matchup"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.position === 't'"
                                 :player="player" />
                         </tbody>
@@ -361,7 +361,7 @@
                         <tbody class="dress">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 'c'"
                                 :player="player" />
                         </tbody>
@@ -369,7 +369,7 @@
                         <tbody class="dress">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 'l'"
                                 :player="player" />
                         </tbody>
@@ -377,7 +377,7 @@
                         <tbody class="dress">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 'r'"
                                 :player="player" />
                         </tbody>
@@ -385,7 +385,7 @@
                         <tbody class="dress">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 'd'"
                                 :player="player" />
                         </tbody>
@@ -393,7 +393,7 @@
                         <tbody class="dress">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 's'"
                                 :player="player" />
                         </tbody>
@@ -401,7 +401,7 @@
                         <tbody class="bench">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 'b' && player.position != 'g' && player.position != 't'"
                                 :player="player" />
                         </tbody>
@@ -409,7 +409,7 @@
                         <tbody class="farm">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 'f' && player.position != 'g' && player.position != 't'"
                                 :player="player" />
                         </tbody>
@@ -417,7 +417,7 @@
                         <tbody class="injury">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 'i' && player.position != 'g' && player.position != 't'"
                                 :player="player" />
                         </tbody>
@@ -443,7 +443,7 @@
                         <tbody class="dress">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 'g'"
                                 :player="player" />
                         </tbody>
@@ -451,7 +451,7 @@
                         <tbody class="bench">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 'b' && player.position === 'g'"
                                 :player="player" />
                         </tbody>
@@ -459,7 +459,7 @@
                         <tbody class="farm">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 'f' && player.position === 'g'"
                                 :player="player" />
                         </tbody>
@@ -467,7 +467,7 @@
                         <tbody class="injury">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 'i' && player.position === 'g'"
                                 :player="player" />
                         </tbody>
@@ -493,7 +493,7 @@
                         <tbody class="dress">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 't'"
                                 :player="player" />
                         </tbody>
@@ -501,7 +501,7 @@
                         <tbody class="bench">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 'b' && player.position === 't'"
                                 :player="player" />
                         </tbody>
@@ -509,7 +509,7 @@
                         <tbody class="farm">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 'f' && player.position === 't'"
                                 :player="player" />
                         </tbody>
@@ -517,7 +517,7 @@
                         <tbody class="injury">
                             <trDaily
                                 v-for="player in players.daily"
-                                :key="player.id"
+                                :key="player.player_id"
                                 v-if="player.games.today.lineup === 'i' && player.position === 't'"
                                 :player="player" />
                         </tbody>
@@ -544,15 +544,15 @@
                 filter: {
                     id: 0,
                     scoreboard: false,
-                    rank: false
+                    score: false
                 },
 
                 sort: {
-                    stat: 'r_total',
+                    stat: 'score',
                     order: '-'
                 },
 
-                ranks: [],
+                scoreboard: [],
 
                 matchup: this.$store.state.config.matchup.currentMatchup,
                 date: this.$store.state.config.date.currentDate,
@@ -581,8 +581,8 @@
         },
 
         methods: {
-            async getScoreboard() {
-                let response = await this.$axios.get('/' + this.date + '/scoreboard:' + this.matchup + '?filter[id]=' + this.filter.id)
+            async getStat() {
+                let response = await this.$axios.get('/' + this.date + '/stat:' + this.matchup + '?filter[id]=' + this.filter.id)
 
                 if (this.filter.id != 0 ) {
                     this.players.daily = response.data.data[0].daily,
@@ -594,13 +594,13 @@
                 this.filter.scoreboard = false
             },
 
-            async getRank() {
-                let response = await this.$axios.get('/rank:' + this.matchup + '?sort=' + this.sort.order + this.sort.stat + ',franchise_id')
+            async getScoreboard() {
+                let response = await this.$axios.get('/scoreboard:' + this.matchup + '?sort=' + this.sort.order + this.sort.stat + ',franchise_id')
 
-                this.ranks = response.data.data
+                this.scoreboard = response.data.data
 
                 this.stat()
-                this.filter.rank = false
+                this.filter.score = false
                 this.$store.dispatch('clearLoading')
             },
 
@@ -611,11 +611,11 @@
                     this.dropdown.range.selected = 'matchup'
                     this.dropdown.franchise.selected = 'totals'
                     this.dropdown.stat.selected = 'score'
-                    this.sort.stat = 'r_total'
+                    this.sort.stat = 'score'
                     this.filter.scoreboard = true
-                    this.filter.rank = true
-                    this.getRank()
+                    this.filter.score = true
                     this.getScoreboard()
+                    this.getStat()
                 }
             },
 
@@ -625,11 +625,11 @@
                 this.dropdown.range.selected = 'matchup'
                 this.dropdown.franchise.selected = 'totals'
                 this.dropdown.stat.selected = 'score'
-                this.sort.stat = 'r_total'
+                this.sort.stat = 'score'
                 this.filter.scoreboard = true
-                this.filter.rank = true
-                this.getRank()
+                this.filter.score = true
                 this.getScoreboard()
+                this.getStat()
             },
 
             stat() {
@@ -652,7 +652,7 @@
                 ]
 
                 this.dropdown.stat.sort = [
-                    'r_total',
+                    'score',
                     'goals',
                     'assists',
                     'points_skater',
@@ -723,7 +723,7 @@
 
                 this.filter.scoreboard = true
                 this.dropdown.franchise.selected = value
-                this.getScoreboard()
+                this.getStat()
             },
 
             filterRange(value) {
@@ -733,7 +733,7 @@
 
                 this.filter.scoreboard = true
                 this.dropdown.range.selected = value
-                this.getScoreboard()
+                this.getStat()
             },
 
             filterStat(value) {
@@ -746,9 +746,9 @@
                 }
 
                 this.sort.stat = this.dropdown.stat.sort[key]
-                this.filter.rank = true
+                this.filter.score = true
                 this.dropdown.stat.selected = value
-                this.getRank()
+                this.getScoreboard()
             }
         },
 
@@ -763,8 +763,8 @@
         },
 
         mounted() {
+            this.getStat()
             this.getScoreboard()
-            this.getRank()
         }
     }
 </script>

@@ -12,7 +12,7 @@
 
         <td>{{ player.games.today.opponent }}</td>
 
-        <td v-for="stat in player.games.today.stats" :key="stat.id">{{ stat }}</td>
+        <td v-for="stat in player.games.today.stats">{{ stat }}</td>
     </tr>
 </template>
 
