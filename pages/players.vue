@@ -338,6 +338,8 @@
 
             <pagination v-if="players.length" :meta="filter.meta" />
         </section>
+
+        <foot />
     </div>
 </template>
 
@@ -722,6 +724,7 @@
 
         beforeDestroy() {
           clearInterval(this.interval)
+          this.$store.dispatch('setLoading')
         }
     }
 </script>

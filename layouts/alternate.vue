@@ -283,8 +283,6 @@
             </defs>
         </svg>
 
-        <navigation />
-
         <nuxt/>
     </div>
 </template>

@@ -337,8 +337,6 @@
                                                     svg
                                                         fill: $grey-5
 
-
-
                     &.injury
                         tr
                             background-color: $injury-light
@@ -346,6 +344,20 @@
 
                             &:last-of-type
                                 margin-bottom: 8px
+
+                            // long term injured reserve
+                            &.out
+                                background-color: lighten($injury, 5%)
+
+                                td:nth-of-type(1)
+                                    pointer-events: none
+
+                                    .fab
+                                        &.toggle
+                                            background-color: lighten($injury, 5%)
+
+                                            span
+                                                background: $injury-dark
 
                             td
                                 &:nth-of-type(1)

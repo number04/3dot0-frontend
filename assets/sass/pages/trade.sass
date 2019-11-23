@@ -1,0 +1,244 @@
+.trade
+    @include flexbox-center-wrap
+    height: calc(100vh)
+    background-color: $black
+    align-content: space-between
+
+    .review
+        height: 100px
+        width: 100%
+        background-color: $grey-4
+
+    .steps
+        @include flexbox-center
+        position: fixed
+        width: 100%
+        height: 100vh
+        justify-content: flex-end
+        z-index: 1
+
+        div
+            @include flexbox-center-wrap
+            padding-right: 16px
+            width: 192px
+
+            &.hero
+                p
+                    text-transform: uppercase
+                    color: $grey-4
+                    letter-spacing: .4px
+                    font-size: $size-xl
+
+            div
+                @include flexbox-center
+                min-height: 48px
+                width: 100%
+                justify-content: flex-end
+
+                span
+                    @include flexbox-center
+
+                    &.label
+                        position: relative
+                        top: -2px
+                        margin-right: 16px
+                        word-wrap: none
+                        color: $grey-6
+                        text-transform: capitalize
+                        font-style: italic
+                        opacity: 0
+                        transition: all 4s ease-in-out
+
+
+
+                    &.dot
+                        width: 8px
+                        height: 8px
+                        border-radius: 50%
+                        cursor: pointer
+                        background-color: $grey-8
+
+                &.active
+                    span.label
+                        opacity: 1
+
+                &.active
+                    span.dot
+                        background-color: $grey-4
+
+    .data
+        @include flexbox-center
+        z-index: 10
+        height: calc(100% - 180px)
+
+        @include keyframes(left)
+            0%
+                transform: translateX(32px)
+                opacity: 0
+
+            50%
+                opacity: .2
+
+            100%
+                transform: translateX(0px)
+                opacity: 1
+
+        @include keyframes(right)
+            0%
+                transform: translateX(-32px)
+                opacity: 0
+
+            50%
+                opacity: .2
+
+            100%
+                transform: translateX(0px)
+                opacity: 1
+
+        .step.one
+            div
+                @include flexbox-center-wrap
+                width: 48px
+
+                &:nth-of-type(odd)
+                    animation-name: left
+                    animation-duration: 1s
+
+                &:nth-of-type(even)
+                    animation-name: right
+                    animation-duration: 1s
+
+                span
+                    @include flexbox-center
+                    margin: 8px 0px
+                    height: 48px
+                    width: 48px
+                    border-radius: 50%
+                    padding: 12px
+                    background-color: $grey-8
+                    fill: $grey-4
+                    cursor: pointer
+
+                    svg
+                        fill: $grey-4
+
+                    &:hover
+                        background-color: $grey-7
+                        transition: background-color .2s ease-in-out
+
+                    &.selected
+                        background-color: $grey-4
+                        transition: background-color .4s ease-in-out
+                        fill: $grey-8
+
+                        svg
+                            fill: $grey-8
+
+        .step-four
+            div
+                p
+                    color: $white
+
+
+
+    .actions
+        @include flexbox-center
+        width: 100%
+        height: 80px
+        z-index: 10
+
+        button, a
+            @include flexbox-center
+            padding: 0
+            height: 32px
+            width: 96px
+            background-color: $grey-8
+            margin: 0px 1px
+
+            &:hover
+                background-color: $grey-7
+                transition: background-color .2s ease-in-out
+
+            span
+                color: $grey-4
+                text-transform: capitalize
+
+.dropdown
+    &.player
+        min-width: 248px
+
+        .dropdown-toggle
+            @include flexbox-center
+            background-color: $grey-8
+            height: 40px
+            width: auto
+            text-transform: capitalize
+            border: none
+            border-radius: 2px
+
+            span
+                font-size: $size-xl
+                color: $grey-4
+
+            span.toggle
+                font-size: $size-xl
+                color: $grey-4
+
+            &.drop
+                border: none
+                border-top-left-radius: 2px
+                border-top-right-radius: 2px
+                border-bottom-right-radius: 0px
+                border-bottom-left-radius: 0px
+
+                &:hover
+                    cursor: default
+                    border-bottom: none
+
+            &:hover
+                cursor: pointer
+                border-bottom: none
+
+        .dropdown-enter
+            opacity: 0
+            @include transition(all .05s ease-out)
+
+        .dropdown-enter-to
+            opacity: 1
+            @include transition(all .1s ease-out)
+
+        .dropdown-menu
+            z-index: 5
+            list-style: none
+            text-align: left
+            background-color: $grey-8
+            border: none
+            border-top: 2px solid $black
+            border-bottom-left-radius: 2px
+            border-bottom-right-radius: 2px
+            position: relative
+            max-height: 300px
+            overflow-y: scroll
+
+            > li
+                > span
+                    @include flexbox-center
+                    width: 100%
+                    text-transform: capitalize
+                    height: 40px
+                    font-size: $size-xl
+                    color: $grey-4
+                    border-bottom: 1px solid $black
+
+                    &.selected
+                        background-color: $grey-4
+                        color: $black
+
+                        &:hover
+                            cursor: default
+                            color: $black
+
+                    &:hover
+                        cursor: pointer
+                        color: $black
+                        background-color: $grey-4

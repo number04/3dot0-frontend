@@ -132,7 +132,7 @@
                                     <span>
                                         <p>{{ franchiseName(filter.id) }}</p>
 
-                                        <nuxt-link to="/">
+                                        <nuxt-link to="trade">
                                             <icon name="trade" h="16" w="16" color="#f79646" />
                                         </nuxt-link>
                                     </span>
@@ -184,14 +184,9 @@
                     </table>
                 </div>
             </div>
-
-
-            <!-- <div v-if="filter.id === 0" class="select">
-                <div>
-                    <span>please select team to compare rosters</span>
-                </div>
-            </div> -->
         </section>
+
+        <foot />
     </div>
 </template>
 
@@ -286,8 +281,7 @@
                 }
 
                 this.dropdown.roster.ids = Object.assign(...keys.map((k, i) => ({[k]: this.dropdown.roster.options[i]})))
-                this.dropdown.roster.options.unshift('franchise')
-                this.dropdown.roster.options.splice(this.franchiseId, 1)
+                this.dropdown.roster.options.splice(this.franchiseId -1, 1)
             },
 
             filterFranchise(value) {
@@ -314,6 +308,10 @@
 
         mounted() {
             this.getFranchise()
+        },
+
+        beforeDestroy() {
+          this.$store.dispatch('setLoading')
         }
     }
 </script>

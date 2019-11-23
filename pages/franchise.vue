@@ -231,6 +231,7 @@
 
                     <tbody class="injury">
                         <trLineup v-for="player in roster('skater', 'i')" :key="player.playerId" :player="player" />
+                        <trLineup v-for="player in roster('skater', 'o')" :key="player.playerId" :player="player" class="out" />
                     </tbody>
 
                     <tbody class="farm">
@@ -297,6 +298,7 @@
 
                     <tbody class="injury">
                         <trLineup v-for="player in roster('goalie', 'i')" :key="player.playerId" :player="player" />
+                        <trLineup v-for="player in roster('goalie', 'o')" :key="player.playerId" :player="player" class="out" />
                     </tbody>
 
                     <tbody class="farm">
@@ -365,6 +367,8 @@
                 </table>
             </div>
         </section>
+
+        <foot />
     </div>
 </template>
 
@@ -393,6 +397,7 @@
                         b: 0,
                         i: 0,
                         f: 0,
+                        o: 0,
                         x: 0
                     },
 
@@ -401,6 +406,7 @@
                         b: 0,
                         i: 0,
                         f: 0,
+                        o: 0,
                         x: 0
                     },
 
@@ -493,8 +499,9 @@
                 let skater = Object.values(this.count.skater).reduce((a, b) => a + b)
                 let goalie = Object.values(this.count.goalie).reduce((a, b) => a + b)
                 let team = Object.values(this.count.team).reduce((a, b) => a + b)
+                let injury = this.count.skater.i + this.count.goalie.i + this.count.skater.o + this.count.goalie.o
 
-                return skater + goalie + team - this.count.skater.i - this.count.goalie.i
+                return skater + goalie + team - injury
             },
 
             handleScroll () {
@@ -582,6 +589,7 @@
         beforeDestroy() {
           window.removeEventListener('scroll', this.handleScroll)
           clearInterval(this.interval)
+          this.$store.dispatch('setLoading')
         }
     }
 </script>

@@ -16,6 +16,7 @@
                 &.capitalize-totals, &.capitalize-all, &.capitalize-franchise
                     text-transform: capitalize
 
+    &.team, &.franchise-transaction, &.franchise-matchup
         ul
             li
                 &:nth-of-type(1)
@@ -26,6 +27,13 @@
                     span
                         text-transform: uppercase
                         font-size: $size-s
+
+    &.roster
+        ul
+            li
+                span
+                    text-transform: uppercase
+                    font-size: $size-s
 
     &.type
         min-width: 112px

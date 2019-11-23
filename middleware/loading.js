@@ -1,4 +1,5 @@
-
 export default function (context) {
-    context.store.dispatch('setLoading')
+     if (process.server) {
+         context.store.dispatch('setLoading')
+     }
 }

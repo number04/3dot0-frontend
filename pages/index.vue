@@ -226,6 +226,8 @@
                 </table>
             </div>
         </section>
+
+        <foot />
     </div>
 </template>
 
@@ -291,7 +293,7 @@
                 let response = await this.$axios.get('/standing:' + this.matchup + '?filter[id]=' + this.filter.standing)
 
                 this.standing.matchup = response.data.data
-                this.standing.total = response.data.total[0]    
+                this.standing.total = response.data.total[0]
                 this.$store.dispatch('clearLoading')
 
                 if (response.data.total[0]) {
@@ -364,6 +366,10 @@
             this.getTransaction()
             this.getFranchiseDetail()
             this.getStanding()
+        },
+
+        beforeDestroy() {
+          this.$store.dispatch('setLoading')
         }
     }
 </script>

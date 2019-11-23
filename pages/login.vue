@@ -9,13 +9,15 @@
                 <span>login</span>
             </button>
         </form>
+
+        <foot />
     </div>
 </template>
 
 <script>
     export default {
         auth: false,
-        
+
         data () {
             return {
                 form: {
@@ -35,6 +37,10 @@
                    name: 'index'
                })
             }
+        },
+
+        beforeDestroy() {
+          this.$store.dispatch('setLoading')
         }
     }
 </script>

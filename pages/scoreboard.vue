@@ -525,6 +525,8 @@
                 </div>
             </div>
         </section>
+
+        <foot />
     </div>
 </template>
 
@@ -765,6 +767,10 @@
         mounted() {
             this.getStat()
             this.getScoreboard()
+        },
+
+        beforeDestroy() {
+          this.$store.dispatch('setLoading')
         }
     }
 </script>
